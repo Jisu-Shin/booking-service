@@ -19,8 +19,9 @@ public class ItemService {
     public final JpaItemRepository jpaItemRepository;
 
     @Transactional
-    public void saveItem(Item item) {
+    public Long saveItem(Item item) {
         jpaItemRepository.save(item);
+        return item.getId();
     }
 
     public List<ItemGetResponseDto> findAll() {
@@ -36,9 +37,10 @@ public class ItemService {
     }
 
     @Transactional
-    public void updateItem(ItemUpdateRequestDto requestDto) {
+    public Long updateItem(ItemUpdateRequestDto requestDto) {
         Item findItem = jpaItemRepository.findById(requestDto.getId())
                 .orElseThrow(() -> new IllegalArgumentException("해당 공연이 없습니다."));
         findItem.update(requestDto.getName(), requestDto.getPrice(), requestDto.getStockQuantity());
+        return findItem.getId();
     }
 }
