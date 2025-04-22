@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.4.4'
-	id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.springframework.boot' version '3.3.5'
+	id 'io.spring.dependency-management' version '1.1.6'
 }
 
 group = 'com'
@@ -55,6 +55,9 @@ dependencies {
 
 	// swagger
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
+	// Eureka 클라이언트 설정
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.5'
 }
 
 tasks.named('test') {
@@ -62,7 +65,7 @@ tasks.named('test') {
 }
 
 ext {
-	set('springCloudVersion', "2024.0.1")
+	set('springCloudVersion', "2023.0.5")
 }
 
 dependencyManagement {
